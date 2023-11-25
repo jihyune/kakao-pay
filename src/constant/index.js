@@ -9,6 +9,7 @@ export const dummyData = {
   item_name: "Elmo",
   tax_free_amount: 0,
   price: 170000,
+  partner_order_id: "partner_order_id",
 
   approval_url: APPROVAL_URL,
   cancel_url: CANCEL_URL,

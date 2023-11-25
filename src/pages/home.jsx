@@ -3,19 +3,19 @@ import { readyPayAxios } from "../api/axios";
 import { Form } from "../components/form";
 
 const HomePage = () => {
-  const [readyData, ready] = useState();
+  const [readyData, setReadyData] = useState();
 
   const readyPay = async (readyPayData) => {
     const returnedData = await readyPayAxios(readyPayData);
-    ready(returnedData);
+    localStorage.setItem("partner_user_id", readyPayData.partner_user_id);
+    setReadyData(returnedData);
   };
 
   useEffect(() => {
     if (!readyData) return;
-
+    console.log(readyData);
     window.open(readyData.next_redirect_pc_url);
     localStorage.setItem("tid", readyData.tid);
-    localStorage.setItem("partner_user_id", readyData.partner_user_id);
   }, [readyData]);
 
   return (
